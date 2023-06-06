@@ -32,7 +32,7 @@ import { ref } from "vue";
 import { Icon } from "@vicons/utils";
 import {
   Link,
-  Blog,
+  Home,
   Cloud,
   PhotoVideo,
   BookOpen,
@@ -44,7 +44,7 @@ import {
 // 建议不要超出6个，若需要超出请自行调整样式
 let linksData = [
   {
-    icon: Blog,
+    icon: Home,
     name: "主页",
     link: "https://yywen.top/",
   },
@@ -71,7 +71,7 @@ let linksData = [
   {
     icon: Hotjar,
     name: "今日热榜",
-    link: "https://hot.imsyy.top/",
+    link: "https://tophub.today/",
   },
 ];
 
