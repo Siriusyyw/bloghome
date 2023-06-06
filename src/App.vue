@@ -105,7 +105,6 @@ onMounted(() => {
     styleTitle,
     styleContent
   );
-  console.log('\n' + ' %c '+ state + ' %c 欢迎您来到我的主页 ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
 });
 
 // 监听宽度变化
