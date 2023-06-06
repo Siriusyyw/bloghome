@@ -3,12 +3,6 @@
   <div :class="store.mobileFuncState ? 'function mobile' : 'function'">
     <el-row :gutter="20">
       <el-col :span="12">
-        <div class="left">
-          <Hitokoto />
-          <Music />
-        </div>
-      </el-col>
-      <el-col :span="12">
         <div class="right cards">
           <div class="time">
             <div class="date">
@@ -26,6 +20,12 @@
             </div>
           </div>
           <Weather />
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="left">
+          <Hitokoto />
+          <Music />
         </div>
       </el-col>
     </el-row>

@@ -33,11 +33,11 @@ import { Icon } from "@vicons/utils";
 import {
   Link,
   Blog,
-  CompactDisc,
   Cloud,
-  Compass,
-  Book,
-  Fire,
+  PhotoVideo,
+  BookOpen,
+  EdgeLegacy,
+  Hotjar,
 } from "@vicons/fa";
 
 // 网站链接数据
@@ -45,31 +45,31 @@ import {
 let linksData = [
   {
     icon: Blog,
-    name: "博客",
-    link: "https://blog.imsyy.top/",
+    name: "主页",
+    link: "https://yywen.top/",
   },
   {
     icon: Cloud,
-    name: "网盘",
-    link: "https://pan.imsyy.top/",
+    name: "云盘",
+    link: "https://cloud.yywen.top/",
   },
   {
-    icon: CompactDisc,
-    name: "音乐",
-    link: "https://music.imsyy.top/",
+    icon: PhotoVideo,
+    name: "相册",
+    link: "https://yywen.top/gallery/",
   },
   {
-    icon: Compass,
-    name: "起始页",
-    link: "https://nav.imsyy.top/",
+    icon: BookOpen,
+    name: "明君书苑",
+    link: "https://yywen.top/books/",
   },
   {
-    icon: Book,
-    name: "网址集",
+    icon: EdgeLegacy,
+    name: "网址导航",
     link: "https://web.imsyy.top/",
   },
   {
-    icon: Fire,
+    icon: Hotjar,
     name: "今日热榜",
     link: "https://hot.imsyy.top/",
   },
