@@ -2,9 +2,9 @@
   <div class="links">
     <div class="line">
       <Icon size="20">
-        <Link />
+        <MapSigns />
       </Icon>
-      <span class="title">网站列表</span>
+      <span class="title">博客导航</span>
     </div>
     <el-row class="link-all" :gutter="20">
       <el-col
@@ -31,7 +31,7 @@
 import { ref } from "vue";
 import { Icon } from "@vicons/utils";
 import {
-  Link,
+  MapSigns,
   Home,
   Cloud,
   PhotoVideo,
@@ -66,7 +66,7 @@ let linksData = [
   {
     icon: EdgeLegacy,
     name: "网址导航",
-    link: "https://web.imsyy.top/",
+    link: "https://yywen.top/tool/",
   },
   {
     icon: Hotjar,
