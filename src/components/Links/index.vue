@@ -4,7 +4,7 @@
       <Icon size="20">
         <MapSigns />
       </Icon>
-      <span class="title">博客导航</span>
+      <span class="title">网站导航</span>
     </div>
     <el-row class="link-all" :gutter="20">
       <el-col
@@ -32,11 +32,11 @@ import { ref } from "vue";
 import { Icon } from "@vicons/utils";
 import {
   MapSigns,
-  Home,
+  Blog,
   Cloud,
   PhotoVideo,
   BookOpen,
-  EdgeLegacy,
+  WikipediaW,
   Hotjar,
 } from "@vicons/fa";
 
@@ -44,19 +44,14 @@ import {
 // 建议不要超出6个，若需要超出请自行调整样式
 let linksData = [
   {
-    icon: Home,
-    name: "主页",
+    icon: Blog,
+    name: "博客",
     link: "https://yywen.top/",
   },
   {
-    icon: Cloud,
-    name: "云盘",
-    link: "https://cloud.yywen.top/",
-  },
-  {
-    icon: PhotoVideo,
-    name: "相册",
-    link: "https://yywen.top/gallery/",
+    icon: WikipediaW,
+    name: "知识库",
+    link: "https://wiki.yywen.top/",
   },
   {
     icon: BookOpen,
@@ -64,9 +59,14 @@ let linksData = [
     link: "https://yywen.top/books/",
   },
   {
-    icon: EdgeLegacy,
-    name: "网址导航",
-    link: "https://yywen.top/tool/",
+    icon: PhotoVideo,
+    name: "相册",
+    link: "https://yywen.top/gallery/",
+  },
+  {
+    icon: Cloud,
+    name: "云盘",
+    link: "https://cloud.yywen.top/",
   },
   {
     icon: Hotjar,

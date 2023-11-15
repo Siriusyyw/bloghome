@@ -66,6 +66,8 @@ onMounted(() => {
     document.getElementsByTagName("body")[0].className = "";
     // 给加载动画添加结束标记
     let loadingBox = document.getElementById("loading-box");
+    let laoderbox = document.getElementById("loader-box");
+    laoderbox.remove();
     loadingBox.classList.add("loaded");
   });
 

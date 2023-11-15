@@ -18,43 +18,38 @@
   <link rel="icon" type="image/png" sizes="32x32" href="https://img.yywen.top/hy-blog/medias/icon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://img.yywen.top/hy-blog/medias/icon/favicon-16x16.png">
   <link rel="stylesheet" href="https://img.yywen.top/hy-blog/css/font_regular.css" />
-  <link rel="stylesheet" href="/loading/loading.min.css">
+  <link rel="stylesheet" href="/loading/loading.css">
+  <!-- <link rel="stylesheet" href="/loading/loading.min.css"> -->
+  <!-- <link rel="stylesheet" href="https://img.yywen.top/hy-blog/css/loading.css"> -->
   <!-- IE Out -->
   <script>
     if ( /*@cc_on!@*/ false || (!!window.MSInputMethodContext && !!document.documentMode))
       window.location.href =
       "https://support.dmeng.net/upgrade-your-browser.html?referrer=" + encodeURIComponent(window.location.href)
   </script>
-  <% if (tongji) { %>
-  <!-- 百度统计 -->
-  <script>
-    var _hmt = _hmt || [];
-    (function () {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?<%- tongji %>";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-  <% } %>
 </head>
 
 <body class="loading">
   <!--加载动画-->
   <div id="loading-box">
-    <div class="loading-left-bg"></div>
-    <div class="loading-right-bg"></div>
-    <div class="spinner-box">
-      <div class="loader">
-        <div class="inner one"></div>
-        <div class="inner two"></div>
-        <div class="inner three"></div>
+    <div id="loader-box">
+      <div class="loader-wrapper">
+          <div class="loader-img"><img src="https://img.yywen.top/hy-blog/medias/img/avatar.jpg" alt=""></div>
+          <div class="loader-text">
+              <!-- 10个div -->
+              <div>L</div>
+              <div>O</div>
+              <div>A</div>
+              <div>D</div>
+              <div>I</div>
+              <div>N</div>
+              <div>G</div>
+              <div></div>
+              <div></div>
+              <div></div>
+          </div>
       </div>
-      <div class="loading-word">
-        <p class="loading-title" id="loading-title"><%- title %></p>
-        <span id="loading-text">加载中</span>
-      </div>
-    </div>
+  </div>
   </div>
   <!-- 主体内容 -->
   <div id="app"></div>
