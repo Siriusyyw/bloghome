@@ -130,8 +130,12 @@
         transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
     }
 }
-.loader-wrapper{
-    /* 固定定位 */
+
+body {
+    height: 100vh;
+}
+
+.loader-wrapper {
     position: fixed;
     left: 0;
     top: 0;
@@ -141,71 +145,70 @@
     /* 溢出隐藏 */
     overflow: hidden;
     /* 渐变背景 */
-    background: linear-gradient(45deg,rgb(90,54,148) 0%,rgb(19,189,206) 33%,rgb(0,148,217) 66%,rgb(111,199,181) 100%);
+    background: linear-gradient(45deg, #5a3694 0%, #13bdce 33%, #0094d9 66%, #6fc7b5 100%);
     background-size: 400%;
     background-position: 0% 100%;
     /* 执行背景渐变动画：动画名 时长 加速后减速 无限次播放 */
     animation: gradient 7.5s ease-in-out infinite;
 }
-/* 旋转loading的外圈 */
-.loader-img{
-    width: 150px;
-    height: 150px;
-    border: 3px solid transparent;
-    border-top-color: #fff;
-    /* 相对定位 居中 */
+
+.loader-wrapper .loader {
     position: relative;
+    width: 180px;
+    height: 180px;
+    border: 3px solid transparent;
+    border-radius: 50%;
     left: 50%;
     top: 50%;
     margin-left: -75px;
-    margin-top: -75px;
+    margin-top: -150px;
     z-index: 2;
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* 执行旋转动画 */
-    animation: spin 1.7s linear infinite;
 }
-/* 旋转loading的中圈 */
-.loader-img::before{
-    content: "";
-    /* 绝对定位 */
+
+.loader-wrapper .loader img {
     position: absolute;
-    top: 5px;
-    left: 5px;
-    bottom: 5px;
-    right: 5px;
+    width: 126px;
+    height: 126px;
     border-radius: 50%;
-    border: 3px solid transparent;
-    border-top-color: #fff;
-    /* 执行反向的旋转动画 reverse:反向 */
-    animation: spin 0.6s linear infinite reverse;
 }
-/* 旋转loading的内圈 */
-.loader-img::after{
-    content: "";
-    /* 绝对定位 */
+
+.loader-wrapper .loader .dot {
     position: absolute;
-    top: 15px;
-    left: 15px;
-    bottom: 15px;
-    right: 15px;
-    border-radius: 50%;
-    border: 3px solid transparent;
-    border-top-color: #fff;
-    /* 执行旋转动画 */
-    animation: spin 1s linear infinite;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    margin-left: calc(-10px / 2);
+    margin-top: calc(-10px / 2);
+    perspective: 70px;
+    transform-style: preserve-3d;
 }
-/* logo */
-.loader-img img{
-    width: 55%;
-    height: 55%;
+
+.loader-wrapper .loader .dot::before,
+.loader-wrapper .loader .dot::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    /* 执行反向的旋转动画,时长必须和外圈的动画一致(不让其跟着旋转) */
-    animation: spin 1.7s linear infinite reverse;
 }
-.loader-text{
+
+.loader-wrapper .loader .dot::before {
+    background: #000;
+    top: -100%;
+    animation: moveBlack 2000ms infinite;
+}
+
+.loader-wrapper .loader .dot::after {
+    background: #FFF;
+    top: 100%;
+    animation: moveWhite 2000ms infinite;
+}
+
+.loader-wrapper .loader-text {
     width: 50%;
     height: 36px;
     /* 绝对定位 水平居中 */
@@ -217,7 +220,8 @@
     /* 防止选取 */
     user-select: none;
 }
-.loader-text div{
+
+.loader-wrapper .loader-text div {
     width: 30px;
     height: 36px;
     color: #fff;
@@ -231,10 +235,10 @@
     /* 执行文字移动动画 */
     animation: move 2s linear infinite;
 }
-/* 最后面的三个圆 */
-.loader-text div:nth-child(8)::before,
-.loader-text div:nth-child(9)::before,
-.loader-text div:nth-child(10)::before{
+
+.loader-wrapper .loader-text div:nth-child(8)::before,
+.loader-wrapper .loader-text div:nth-child(9)::before,
+.loader-wrapper .loader-text div:nth-child(10)::before {
     content: "";
     width: 10px;
     height: 10px;
@@ -244,88 +248,459 @@
     left: 0;
     bottom: 0;
 }
-/* 文字下的投影 */
-.loader-text div::after{
+
+.loader-wrapper .loader-text div::after {
     content: "";
     width: 10px;
     height: 5px;
     border-radius: 50%;
-    background-color: rgba(255,255,255,0.15);
+    background-color: rgba(255, 255, 255, 0.15);
     position: absolute;
     bottom: -40px;
     left: 50%;
     margin-left: -5px;
 }
-/* 最后面的三个圆的投影 */
-.loader-text div:nth-child(8)::after,
-.loader-text div:nth-child(9)::after,
-.loader-text div:nth-child(10)::after{
+
+.loader-wrapper .loader-text div:nth-child(8)::after,
+.loader-wrapper .loader-text div:nth-child(9)::after,
+.loader-wrapper .loader-text div:nth-child(10)::after {
     left: 0;
     margin-left: 0;
 }
-/* 接下来为各个文字设置动画延迟时间 */
-.loader-text div:nth-child(2){
+
+.loader-wrapper .loader-text div:nth-child(2) {
     animation-delay: 0.2s;
 }
-.loader-text div:nth-child(3){
+
+.loader-wrapper .loader-text div:nth-child(3) {
     animation-delay: 0.4s;
 }
-.loader-text div:nth-child(4){
+
+.loader-wrapper .loader-text div:nth-child(4) {
     animation-delay: 0.6s;
 }
-.loader-text div:nth-child(5){
+
+.loader-wrapper .loader-text div:nth-child(5) {
     animation-delay: 0.8s;
 }
-.loader-text div:nth-child(6){
+
+.loader-wrapper .loader-text div:nth-child(6) {
     animation-delay: 1s;
 }
-.loader-text div:nth-child(7){
+
+.loader-wrapper .loader-text div:nth-child(7) {
     animation-delay: 1.2s;
 }
-.loader-text div:nth-child(8){
+
+.loader-wrapper .loader-text div:nth-child(8) {
     animation-delay: 1.4s;
 }
-.loader-text div:nth-child(9){
+
+.loader-wrapper .loader-text div:nth-child(9) {
     animation-delay: 1.6s;
 }
-.loader-text div:nth-child(10){
+
+.loader-wrapper .loader-text div:nth-child(10) {
     animation-delay: 1.8s;
+}
+
+.loader .dot:nth-child(1) {
+    transform: rotate(calc(calc(360deg / 36)*1)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(1)::before,
+.loader .dot:nth-child(1)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 1);
+}
+
+.loader .dot:nth-child(2) {
+    transform: rotate(calc(calc(360deg / 36)*2)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(2)::before,
+.loader .dot:nth-child(2)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 2);
+}
+
+.loader .dot:nth-child(3) {
+    transform: rotate(calc(calc(360deg / 36)*3)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(3)::before,
+.loader .dot:nth-child(3)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 3);
+}
+
+.loader .dot:nth-child(4) {
+    transform: rotate(calc(calc(360deg / 36)*4)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(4)::before,
+.loader .dot:nth-child(4)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 4);
+}
+
+.loader .dot:nth-child(5) {
+    transform: rotate(calc(calc(360deg / 36)*5)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(5)::before,
+.loader .dot:nth-child(5)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 5);
+}
+
+.loader .dot:nth-child(6) {
+    transform: rotate(calc(calc(360deg / 36)*6)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(6)::before,
+.loader .dot:nth-child(6)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 6);
+}
+
+.loader .dot:nth-child(7) {
+    transform: rotate(calc(calc(360deg / 36)*7)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(7)::before,
+.loader .dot:nth-child(7)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 7);
+}
+
+.loader .dot:nth-child(8) {
+    transform: rotate(calc(calc(360deg / 36)*8)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(8)::before,
+.loader .dot:nth-child(8)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 8);
+}
+
+.loader .dot:nth-child(9) {
+    transform: rotate(calc(calc(360deg / 36)*9)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(9)::before,
+.loader .dot:nth-child(9)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 9);
+}
+
+.loader .dot:nth-child(10) {
+    transform: rotate(calc(calc(360deg / 36)*10)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(10)::before,
+.loader .dot:nth-child(10)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 10);
+}
+
+.loader .dot:nth-child(11) {
+    transform: rotate(calc(calc(360deg / 36)*11)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(11)::before,
+.loader .dot:nth-child(11)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 11);
+}
+
+.loader .dot:nth-child(12) {
+    transform: rotate(calc(calc(360deg / 36)*12)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(12)::before,
+.loader .dot:nth-child(12)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 12);
+}
+
+.loader .dot:nth-child(13) {
+    transform: rotate(calc(calc(360deg / 36)*13)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(13)::before,
+.loader .dot:nth-child(13)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 13);
+}
+
+.loader .dot:nth-child(14) {
+    transform: rotate(calc(calc(360deg / 36)*14)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(14)::before,
+.loader .dot:nth-child(14)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 14);
+}
+
+.loader .dot:nth-child(15) {
+    transform: rotate(calc(calc(360deg / 36)*15)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(15)::before,
+.loader .dot:nth-child(15)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 15);
+}
+
+.loader .dot:nth-child(16) {
+    transform: rotate(calc(calc(360deg / 36)*16)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(16)::before,
+.loader .dot:nth-child(16)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 16);
+}
+
+.loader .dot:nth-child(17) {
+    transform: rotate(calc(calc(360deg / 36)*17)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(17)::before,
+.loader .dot:nth-child(17)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 17);
+}
+
+.loader .dot:nth-child(18) {
+    transform: rotate(calc(calc(360deg / 36)*18)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(18)::before,
+.loader .dot:nth-child(18)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 18);
+}
+
+.loader .dot:nth-child(19) {
+    transform: rotate(calc(calc(360deg / 36)*19)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(19)::before,
+.loader .dot:nth-child(19)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 19);
+}
+
+.loader .dot:nth-child(20) {
+    transform: rotate(calc(calc(360deg / 36)*20)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(20)::before,
+.loader .dot:nth-child(20)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 20);
+}
+
+.loader .dot:nth-child(21) {
+    transform: rotate(calc(calc(360deg / 36)*21)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(21)::before,
+.loader .dot:nth-child(21)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 21);
+}
+
+.loader .dot:nth-child(22) {
+    transform: rotate(calc(calc(360deg / 36)*22)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(22)::before,
+.loader .dot:nth-child(22)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 22);
+}
+
+.loader .dot:nth-child(23) {
+    transform: rotate(calc(calc(360deg / 36)*23)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(23)::before,
+.loader .dot:nth-child(23)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 23);
+}
+
+.loader .dot:nth-child(24) {
+    transform: rotate(calc(calc(360deg / 36)*24)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(24)::before,
+.loader .dot:nth-child(24)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 24);
+}
+
+.loader .dot:nth-child(25) {
+    transform: rotate(calc(calc(360deg / 36)*25)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(25)::before,
+.loader .dot:nth-child(25)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 25);
+}
+
+.loader .dot:nth-child(26) {
+    transform: rotate(calc(calc(360deg / 36)*26)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(26)::before,
+.loader .dot:nth-child(26)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 26);
+}
+
+.loader .dot:nth-child(27) {
+    transform: rotate(calc(calc(360deg / 36)*27)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(27)::before,
+.loader .dot:nth-child(27)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 27);
+}
+
+.loader .dot:nth-child(28) {
+    transform: rotate(calc(calc(360deg / 36)*28)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(28)::before,
+.loader .dot:nth-child(28)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 28);
+}
+
+.loader .dot:nth-child(29) {
+    transform: rotate(calc(calc(360deg / 36)*29)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(29)::before,
+.loader .dot:nth-child(29)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 29);
+}
+
+.loader .dot:nth-child(30) {
+    transform: rotate(calc(calc(360deg / 36)*30)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(30)::before,
+.loader .dot:nth-child(30)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 30);
+}
+
+.loader .dot:nth-child(31) {
+    transform: rotate(calc(calc(360deg / 36)*31)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(31)::before,
+.loader .dot:nth-child(31)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 31);
+}
+
+.loader .dot:nth-child(32) {
+    transform: rotate(calc(calc(360deg / 36)*32)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(32)::before,
+.loader .dot:nth-child(32)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 32);
+}
+
+.loader .dot:nth-child(33) {
+    transform: rotate(calc(calc(360deg / 36)*33)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(33)::before,
+.loader .dot:nth-child(33)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 33);
+}
+
+.loader .dot:nth-child(34) {
+    transform: rotate(calc(calc(360deg / 36)*34)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(34)::before,
+.loader .dot:nth-child(34)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 34);
+}
+
+.loader .dot:nth-child(35) {
+    transform: rotate(calc(calc(360deg / 36)*35)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(35)::before,
+.loader .dot:nth-child(35)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 35);
+}
+
+.loader .dot:nth-child(36) {
+    transform: rotate(calc(calc(360deg / 36)*36)) translateY(calc(-180px / 2));
+}
+
+.loader .dot:nth-child(36)::before,
+.loader .dot:nth-child(36)::after {
+    animation-delay: calc(-2000ms / 36 * 6 * 36);
 }
 
 /* 定义动画 */
 /* 背景渐变动画 */
 @keyframes gradient {
-    50%{
+    50% {
         background-position: 100% 0%;
     }
 }
-/* 旋转动画 */
-@keyframes spin {
-    0%{
-        transform: rotate(0);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
-}
+
 /* 文字移动动画 */
 @keyframes move {
-    0%{
+    0% {
         right: 0;
         opacity: 0;
     }
-    35%{
+
+    35% {
         right: 41%;
         opacity: 1;
         transform: rotate(0);
     }
-    65%{
+
+    65% {
         right: 59%;
         opacity: 1;
         transform: rotate(0);
     }
-    100%{
+
+    100% {
         right: 100%;
         transform: rotate(-180deg);
+    }
+}
+
+/* 黑色小球移动动画 */
+@keyframes moveBlack {
+    0% {
+        animation-timing-function: ease-in;
+    }
+
+    25% {
+        transform: translate3d(0, 100%, 10px);
+        animation-timing-function: ease-out;
+    }
+
+    50% {
+        transform: translate3d(0, 200%, 0);
+        animation-timing-function: ease-in;
+    }
+
+    75% {
+        transform: translate3d(0, 100%, -10px);
+        animation-timing-function: ease-out;
+    }
+}
+
+/* 白色小球移动动画 */
+@keyframes moveWhite {
+    0% {
+        animation-timing-function: ease-in;
+    }
+
+    25% {
+        transform: translate3d(0, -100%, -10px);
+        animation-timing-function: ease-out;
+    }
+
+    50% {
+        transform: translate3d(0, -200%, 0);
+        animation-timing-function: ease-in;
+    }
+
+    75% {
+        transform: translate3d(0, -100%, 10px);
+        animation-timing-function: ease-out;
     }
 }

@@ -16,11 +16,22 @@
         <div
           class="item cards"
           :style="index < 3 ? 'margin-bottom: 20px' : null"
+          @mouseenter="showDescription = index"
+          @mouseleave="showDescription = null"
         >
-          <Icon size="26">
-            <component :is="item.icon" />
-          </Icon>
-          <span class="name">{{ item.name }}</span>
+          <div class="card-front" :class="{ flipped: showDescription === index }">
+            <Icon size="26">
+              <component :is="item.icon" />
+            </Icon>
+            <span class="name">{{ item.name }}</span>
+          </div>
+          <div 
+            class="card-back" 
+            :class="{ flipped: showDescription === index }"
+            v-if="false"
+          >
+            <span class="description">{{ item.description }}</span>
+          </div>
         </div>
       </el-col>
     </el-row>
@@ -47,31 +58,37 @@ let linksData = [
     icon: Blog,
     name: "博客",
     link: "https://yywen.top/",
+    description: "这是博客的说明文本",
   },
   {
     icon: WikipediaW,
     name: "知识库",
     link: "https://wiki.yywen.top/",
+    description: "这是博客的说明文本",
   },
   {
     icon: BookOpen,
     name: "明君书苑",
     link: "https://yywen.top/books/",
+    description: "这是博客的说明文本",
   },
   {
     icon: PhotoVideo,
     name: "相册",
     link: "https://yywen.top/gallery/",
+    description: "这是博客的说明文本",
   },
   {
     icon: Cloud,
     name: "云盘",
     link: "https://cloud.yywen.top/",
+    description: "这是博客的说明文本",
   },
   {
     icon: Hotjar,
     name: "今日热榜",
     link: "https://tophub.today/",
+    description: "这是博客的说明文本",
   },
 ];
 
@@ -79,6 +96,9 @@ let linksData = [
 const jumpLink = (url) => {
   window.open(url, "_blank");
 };
+
+// 当前悬浮链接的索引
+const showDescription = ref(null);
 </script>
 
 <style lang="scss" scoped>
@@ -133,6 +153,7 @@ const jumpLink = (url) => {
         }
       }
     }
+
   }
 }
 </style>
